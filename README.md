@@ -4,22 +4,20 @@ This gem allows programmatic access to the CopperEgg Revealmetrics API.
 
 This is a fork of the [official client](https://github.com/CopperEgg/copperegg-ruby), adding additional functionality.
 
-## Install
+## Getting Started
 
+Install with ruby gems:
 ```
 gem install copperegg-revealmetrics
 ```
 
-## Getting Started
-
-#### Setup
-
+Set up your API key:
 ``` ruby
 require 'copperegg-revealmetrics'
 CopperEgg::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
 ```
 
-## Metric Groups:
+## Metric Groups
 
 #### Get a metric group:
 
@@ -58,7 +56,7 @@ metric_group2.name
 # => "my_metric_group"
 ```
 
-#### Updating a metric group:
+#### Update a metric group:
 
 Labels, frequency, metric types and metric units can be updated and additional metrics can be added. Changes to the metric group name or names of metrics within will be ignored.
 
@@ -157,7 +155,7 @@ dashboard.delete
 
 ## Tags
 
-#### Getting all or specific tags
+#### Get all or specific tags
 
 ```ruby
 tags_list = CopperEgg::Tag.find
