@@ -13,8 +13,8 @@ gem install copperegg-revealmetrics
 
 Set up your API key:
 ``` ruby
-require 'copperegg'
-CopperEgg::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
+require 'copperegg/revealmetrics'
+Copperegg::Revealmetrics::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
 ```
 
 ## Metric Groups
@@ -22,19 +22,19 @@ CopperEgg::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
 #### Get a metric group:
 
 ``` ruby
-metric_group = CopperEgg::MetricGroup.find("my_metric_group")
+metric_group = Copperegg::Revealmetrics::MetricGroup.find("my_metric_group")
 metric_group.name
 # => "my_metric_group"
 metric_group.label
 # => "My Metric Group"
 metric_group.metrics
-# => [#<CopperEgg::MetricGroup::Metric:0x007fb43aab2570 @position=0, @type="ce_gauge", @name="metric1", @label="Metric 1", @unit="b">]
+# => [#<Copperegg::Revealmetrics::MetricGroup::Metric:0x007fb43aab2570 @position=0, @type="ce_gauge", @name="metric1", @label="Metric 1", @unit="b">]
 ```
 
 #### Create a metric group:
 
 ``` ruby
-metric_group = CopperEgg::MetricGroup.new(:name => "my_new_metric_group", :label => "Cool New Group Visible Name", :frequency => 60) # data is sent every 60 seconds
+metric_group = Copperegg::Revealmetrics::MetricGroup.new(:name => "my_new_metric_group", :label => "Cool New Group Visible Name", :frequency => 60) # data is sent every 60 seconds
 metric_group.metrics << {"type"=>"ce_gauge",   "name"=>"active_connections",     "unit"=>"Connections"}
 metric_group.metrics << {"type"=>"ce_gauge",   "name"=>"connections_accepts",    "unit"=>"Connections"}
 metric_group.metrics << {"type"=>"ce_gauge",   "name"=>"connections_handled",    "unit"=>"Connections"}
@@ -48,7 +48,7 @@ metric_group.save
 If a metric group by the same name already exists, that one will rather than creating a new one. In addition, if the metric group was previously removed it will be restored.
 
 ```ruby
-metric_group2 = CopperEgg::MetricGroup.new(:name => "my_new_metric_group", :label => "New Group Version 2", :frequency => 60)
+metric_group2 = Copperegg::Revealmetrics::MetricGroup.new(:name => "my_new_metric_group", :label => "New Group Version 2", :frequency => 60)
 metric_group2.metrics << {"type"=>"ce_counter", "name"=>"active_connections", "unit"=>"Connections"}
 metric_group2.save # this will perform an update to change the type of the metric 'active_connections' from 'ce_gauge' to 'ce_counter'
 
@@ -86,20 +86,20 @@ metric_group.delete
 #### Post samples for a metric group
 
 ```ruby
-CopperEgg::MetricSample.save(metric_group.name, "custom_identifier1", Time.now.to_i, "active_connections" => 2601, "connections_accepts" => 154, "connections_handled" => 128, "connections_requested" => 1342, ...)
+Copperegg::Revealmetrics::MetricSample.save(metric_group.name, "custom_identifier1", Time.now.to_i, "active_connections" => 2601, "connections_accepts" => 154, "connections_handled" => 128, "connections_requested" => 1342, ...)
 ```
 
 #### Get samples
 
 ```ruby
 # Get the most recent samples for a single metric
-CopperEgg::MetricSample.samples(metric_group.name, "connections_accepts")
+Copperegg::Revealmetrics::MetricSample.samples(metric_group.name, "connections_accepts")
 
 # Get the most recent samples for multiple metrics
-CopperEgg::MetricSample.samples(metric_group.name, ["connections_accepts", "connections_handled", "reading", "writing"])
+Copperegg::Revealmetrics::MetricSample.samples(metric_group.name, ["connections_accepts", "connections_handled", "reading", "writing"])
 
 # Specify a start time and duration
-CopperEgg::MetricSample.samples(metric_group.name, ["connections_accepts", "connections_handled", "reading", "writing"], :starttime => 4.hours.ago, :duration => 15.minutes)
+Copperegg::Revealmetrics::MetricSample.samples(metric_group.name, ["connections_accepts", "connections_handled", "reading", "writing"], :starttime => 4.hours.ago, :duration => 15.minutes)
 ```
 
 The raw JSON response is returned as specified in the [API docs][sample_docs].
@@ -112,37 +112,37 @@ By default, the dashboard created will be named "_MetricGroupLabel_ Dashboard" a
 
 ```ruby
 # Creates a dashboard named "My Metric Group Dashboard"
-dashboard = CopperEgg::CustomDashboard.create(metric_group)
+dashboard = Copperegg::Revealmetrics::CustomDashboard.create(metric_group)
 ```
 
 You can pass an option to specify the name of the dashboard.
 
 ```ruby
-dashboard = CopperEgg::CustomDashboard.create(metric_group, :name => "Cloud Servers")
+dashboard = Copperegg::Revealmetrics::CustomDashboard.create(metric_group, :name => "Cloud Servers")
 ```
 
 If a single identifier is specified, the dashboard will be created having one value widget per metric matching the single identifier.
 
 ```ruby
-dashboard = CopperEgg::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => "custom_identifier1")
+dashboard = Copperegg::Revealmetrics::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => "custom_identifier1")
 ```
 
 If an array of identifiers is specified, the dashboard will be created having one timeline widget per metric matching each identifier.
 
 ```ruby
-dashboard = CopperEgg::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => ["custom_identifier1", "custom_identifier2"])
+dashboard = Copperegg::Revealmetrics::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => ["custom_identifier1", "custom_identifier2"])
 ```
 
 You can limit the widgets created by metric.
 
 ```ruby
-dashboard = CopperEgg::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => ["custom_identifier1", "custom_identifier2"], :metrics => ["reading", "writing", "waiting"])
+dashboard = Copperegg::Revealmetrics::CustomDashboard.create(metric_group, :name => "Cloud Servers", :identifiers => ["custom_identifier1", "custom_identifier2"], :metrics => ["reading", "writing", "waiting"])
 ```
 
 #### Get a dashboard
 
 ```ruby
-dashboard = CopperEgg::CustomDashboard.find_by_name("My Metric Group Dashboard")
+dashboard = Copperegg::Revealmetrics::CustomDashboard.find_by_name("My Metric Group Dashboard")
 ```
 
 #### Delete a dashboard
@@ -158,14 +158,14 @@ dashboard.delete
 #### Get all or specific tags
 
 ```ruby
-tags_list = CopperEgg::Tag.find
-tag = CopperEgg::Tag.find_by_name("my-tag")
+tags_list = Copperegg::Revealmetrics::Tag.find
+tag = Copperegg::Revealmetrics::Tag.find_by_name("my-tag")
 ```
 
 #### Create a tag
 
 ```ruby
-tag = CopperEgg::Tag.new({:name => "my-tag"})
+tag = Copperegg::Revealmetrics::Tag.new({:name => "my-tag"})
 tag.objects = ["object-identifier-1", "object-identifier-2"]
 tag.save
 ```

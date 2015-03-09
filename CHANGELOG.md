@@ -1,3 +1,7 @@
+## 0.8.0
+  - Rename module from "CopperEgg" to "Copperegg::Revealmetrics"
+
+
 ## 0.7.1
   - Fix gem release
 

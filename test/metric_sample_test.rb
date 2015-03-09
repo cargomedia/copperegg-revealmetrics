@@ -1,6 +1,6 @@
 require "test/unit"
-require "copperegg"
+require "copperegg/revealmetrics"
 
 class MetricSampleTest < Test::Unit::TestCase
-	
+
 end
