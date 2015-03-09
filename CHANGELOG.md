@@ -1,3 +1,7 @@
+## 0.7.0
+ - Cover "tags" functionality of API with `CopperEgg::Tag`.
+
+
 ## 0.6.2
  - Fork from `CopperEgg/copperegg-ruby` to `cargomedia/copperegg-revealmetrics`
 
