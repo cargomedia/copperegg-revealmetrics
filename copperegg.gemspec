@@ -1,8 +1,8 @@
-require File.expand_path('../lib/copperegg/ver', __FILE__)
+require File.expand_path('../lib/copperegg/revealmetrics/ver', __FILE__)
 
 Gem::Specification.new do |s|
   s.name = 'copperegg-revealmetrics'
-  s.version = CopperEgg::GEM_VERSION
+  s.version = Copperegg::Revealmetrics::GEM_VERSION
   s.summary = 'API client for CopperEgg Revealmetrics'
   s.description = 'API client for CopperEgg Revealmetrics'
   s.authors = ['Eric Anderson', 'Cargo Media']
