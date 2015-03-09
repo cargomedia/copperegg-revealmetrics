@@ -13,7 +13,7 @@ gem install copperegg-revealmetrics
 
 Set up your API key:
 ``` ruby
-require 'copperegg-revealmetrics'
+require 'copperegg'
 CopperEgg::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
 ```
 

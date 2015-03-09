@@ -1,9 +1,12 @@
+## 0.7.1
+  - Fix gem release
+
 ## 0.7.0
- - Cover "tags" functionality of API with `CopperEgg::Tag`.
+  - Cover "tags" functionality of API with `CopperEgg::Tag`.
 
 
 ## 0.6.2
- - Fork from `CopperEgg/copperegg-ruby` to `cargomedia/copperegg-revealmetrics`
+  - Fork from `CopperEgg/copperegg-ruby` to `cargomedia/copperegg-revealmetrics`
 
 
 ## 0.6.1 (January 17, 2013)
