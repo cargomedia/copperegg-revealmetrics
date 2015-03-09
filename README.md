@@ -1,22 +1,13 @@
-# CopperEgg Gem
+# CopperEgg Revealmetrics
 
-The CopperEgg gem allows programmatic access to the CopperEgg API.
+This gem allows programmatic access to the CopperEgg Revealmetrics API.
+
+This is a fork of the [official client](https://github.com/CopperEgg/copperegg-ruby), adding additional functionality.
 
 ## Install
 
-Via rubygems.org:
-
 ```
-$ gem install copperegg
-```
-
-To build and install the development branch yourself from the latest source:
-
-```
-$ git clone git://github.com/CopperEgg/copperegg-ruby.git -b develop
-$ cd copperegg-ruby
-$ gem build copperegg.gemspec
-$ gem install copperegg-{version}.gem
+gem install copperegg-revealmetrics
 ```
 
 ## Getting Started
@@ -24,8 +15,7 @@ $ gem install copperegg-{version}.gem
 ### Setup
 
 ``` ruby
-require 'rubygems' # not necessary with ruby 1.9 but included for completeness
-require 'copperegg'
+require 'copperegg-revealmetrics'
 CopperEgg::Api.apikey = "sdf87xxxxxxxxxxxxxxxxxxxxx" # from the web UI
 ```
 
@@ -167,8 +157,5 @@ There are more detailed examples in the [test classes][test_classes].
 Full [API docs][docs] are available.
 
 [sample_docs]:http://dev.copperegg.com/revealmetrics/samples.html
-[test_classes]:https://github.com/copperegg/copperegg-ruby/tree/develop/test
+[test_classes]:/test
 [docs]:http://dev.copperegg.com
-
-## Copyright
-Copyright 2013 CopperEgg.

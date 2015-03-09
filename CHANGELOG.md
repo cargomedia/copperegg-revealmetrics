@@ -1,3 +1,7 @@
+## 0.6.2
+ - Fork from `CopperEgg/copperegg-ruby` to `cargomedia/copperegg-revealmetrics`
+
+
 ## 0.6.1 (January 17, 2013)
 
 Changes:
