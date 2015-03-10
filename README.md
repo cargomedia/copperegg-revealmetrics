@@ -155,11 +155,10 @@ dashboard.delete
 
 ## Tags
 
-#### Get all or specific tags
+#### Get all tags
 
 ```ruby
 tags_list = Copperegg::Revealmetrics::Tag.find
-tag = Copperegg::Revealmetrics::Tag.find_by_name("my-tag")
 ```
 
 #### Create a tag
