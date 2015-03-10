@@ -1,3 +1,7 @@
+## 0.8.1
+  - Allow to push to `Tag.objects` even if uninitialized
+
+
 ## 0.8.0
   - Rename module from "CopperEgg" to "Copperegg::Revealmetrics"
 
