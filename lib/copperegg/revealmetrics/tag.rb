@@ -9,6 +9,7 @@ module Copperegg
       attr_accessor :name, :objects
 
       def load_attributes(attributes)
+        @objects = []
         @objects_original = []
 
         attributes.each do |name, value|
@@ -71,7 +72,7 @@ module Copperegg
 
         remove_objects(@objects_original - @objects)
         add_objects(@objects - @objects_original)
-        @objects_original = @objects
+        @objects_original = @objects.clone
       end
 
       def update
