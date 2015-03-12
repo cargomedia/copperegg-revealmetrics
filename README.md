@@ -1,4 +1,5 @@
-# CopperEgg Revealmetrics
+Copperegg::Revealmetrics [![Build Status](https://travis-ci.org/cargomedia/copperegg-revealmetrics.png)](https://travis-ci.org/cargomedia/copperegg-revealmetrics)
+========================
 
 This gem allows programmatic access to the CopperEgg Revealmetrics API.
 
