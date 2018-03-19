@@ -1,3 +1,8 @@
+UNMAINTAINED
+============
+This project is not maintained anymore.
+If you want to take over contact us at tech@cargomedia.ch.
+
 Copperegg::Revealmetrics [![Build Status](https://travis-ci.org/cargomedia/copperegg-revealmetrics.png)](https://travis-ci.org/cargomedia/copperegg-revealmetrics)
 ========================
 
